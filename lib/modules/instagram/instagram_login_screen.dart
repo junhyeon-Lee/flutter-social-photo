@@ -24,7 +24,7 @@ class InstagramLoginScreen extends StatelessWidget {
               color: Colors.blue,
               child: InAppWebView(
                 initialUrlRequest: URLRequest(
-                  url: WebUri('https://api.instagram.com/oauth/authorize?client_id=3546246995691469&redirect_uri=https://google.com&scope=user_profile,user_media&response_type=code'),
+                  url: WebUri('https://api.instagram.com/oauth/authorize?client_id=580002062693465&redirect_uri=https://google.com&scope=user_profile,user_media&response_type=code'),
                 ),
                 onWebViewCreated: (controller) {
                   webView = controller;
