@@ -3,9 +3,16 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:reference_app/util/safe_print.dart';
 import 'package:http/http.dart' as http;
-import '../../main.dart';
+import '../../../main.dart';
 
 class InstagramImageController extends GetxController {
+  @override
+  Future<void> onInit() async {
+    await instagramGetUserInfo();
+
+    super.onInit();
+  }
+
   String instaUserId = '';
 
   Future<void> instagramGetUserInfo() async {
@@ -21,11 +28,10 @@ class InstagramImageController extends GetxController {
     safePrint(response.body);
 
     final profileInfo = json.decode(response.body);
-    safePrint(profileInfo.toString());
 
     instaUserId = profileInfo.toString().substring(5, 21);
-    safePrint('유저 아이디 G${instaUserId}G');
-    getInstagramInitImage();
+    // safePrint('유저 아이디 G${instaUserId}G');
+    //getInstagramInitImage();
   }
 
   Future<void> getInstagramInitImage() async {
@@ -34,5 +40,8 @@ class InstagramImageController extends GetxController {
       'access_token': mainService.instagramToken,
     });
     final response = await http.get(url);
+
+    safePrint(response.body);
+
   }
 }
