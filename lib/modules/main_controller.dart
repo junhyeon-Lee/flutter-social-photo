@@ -35,6 +35,7 @@ class MainController extends GetxController {
       Map<String, dynamic> responseData = json.decode(response.body);
       String accessToken = responseData['access_token'];
       mainService.instagramToken = accessToken;
+      update();
     }
   }
 }

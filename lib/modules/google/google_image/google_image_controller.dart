@@ -16,6 +16,7 @@ class GoogleImageController extends GetxController {
     super.onInit();
   }
 
+
   bool isLoading = false;
 
   GooglePhotoList? googlePhotoList;

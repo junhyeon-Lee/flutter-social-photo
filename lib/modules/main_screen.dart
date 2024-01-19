@@ -5,6 +5,7 @@ import 'package:reference_app/modules/google/google_album/google_album_Screen.da
 import 'package:reference_app/modules/google/google_image/google_list_screen.dart';
 import 'package:reference_app/util/safe_print.dart';
 
+import 'instagram/instagram_list/instagram_list_screen.dart';
 import 'instagram/instagram_login_screen.dart';
 import 'main_controller.dart';
 
@@ -88,24 +89,30 @@ class MainScreen extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () async {
+
                             safePrint('sign with instagram');
                             Get.to(const InstagramLoginScreen());
                           },
                           child: Container(
-                            decoration: BoxDecoration(color: Colors.orange.withOpacity(0.3), borderRadius: const BorderRadius.all(Radius.circular(20))),
+                            decoration: BoxDecoration(color:mainService.instagramToken==''?Colors.orange.withOpacity(0.9):Colors.orange.withOpacity(0.3), borderRadius: const BorderRadius.all(Radius.circular(20))),
                             width: 200,
                             height: 80,
-                            child: const Center(
-                              child: Text('인스타 로그인 하기'),
+                            child: Center(
+                              child: Text(mainService.instagramToken==''?'인스타 로그인 하기':'인스타 로그인 됨'),
                             ),
                           ),
                         ),
                         GestureDetector(
                           onTap: () {
-                            //Get.to(const GoogleListScreen());
+                            if(mainService.instagramToken==''){
+
+                            }else{
+                              Get.to(const InstagramListScreen());
+                            }
                           },
                           child: Container(
-                            decoration: BoxDecoration(color: Colors.orange.withOpacity(0.3), borderRadius: const BorderRadius.all(Radius.circular(20))),
+                            decoration: BoxDecoration(
+                                color: mainService.instagramToken==''?Colors.orange.withOpacity(0.3):Colors.orange.withOpacity(0.9), borderRadius: const BorderRadius.all(Radius.circular(20))),
                             width: 120,
                             height: 80,
                             child: const Center(
