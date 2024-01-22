@@ -31,17 +31,33 @@ class InstagramImageController extends GetxController {
 
     instaUserId = profileInfo.toString().substring(5, 21);
     // safePrint('유저 아이디 G${instaUserId}G');
-    //getInstagramInitImage();
+    getInstagramInitImage();
   }
 
   Future<void> getInstagramInitImage() async {
-    final url = Uri.https('graph.instagram.com', '/18029728546838820', {
-      'fields': 'id,media_url,media_type,permalink,thumbnail_url',
-      'access_token': mainService.instagramToken,
+    // safePrint('이미지 상세정보 요청');
+    // final url = Uri.https('graph.instagram.com', '/18029728546838820', {
+    //   'fields': 'id,media_url,media_type,permalink,thumbnail_url',
+    //   'access_token': mainService.instagramToken,
+    // });
+    // final response = await http.get(url);
+    //
+    // safePrint('게시물 상세 정보');
+    // safePrint(response.body);
+
+    safePrint('이미지 상세정보 요청');
+    safePrint(mainService.instagramToken);
+    final url = Uri.https('graph.facebook.com', '/18029728546838820/7380214232030383/insights', {
+      //'fields': 'id,media_url,media_type,permalink,thumbnail_url',
+      'access_token': 'EAAEtZBNznB7oBOZBhjTfxo1NOx6GcbIA6SWQt3RHBfmnTAZAXbY55ubzsPZArgUZARdJcR5bxlWGt7IVhTiHIZCROHokdwiZCQ68ZCucCD5OMKOQSu91IZCBpglp1lFaMKI3VKhg7fVSOws5ulHprV6jZAp40Bt0BZC0yDr6RXGn4XPttPNhvSyCBxf9yjwAEUZCZCiKX0AMGgrnr7LmkjgGbwaHXI6rSfamvBCT3aQZDZD',
     });
     final response = await http.get(url);
 
+    safePrint('게시물 상세 정보');
     safePrint(response.body);
+
+
+
 
   }
 }
